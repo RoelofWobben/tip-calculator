@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="./roelof.css" rel="stylesheet">
+  <title>Frontend Mentor | Tip calculator app</title>
+</head>
+<body>
+      <!-- veranderen in het gegeven logo -->
+    <div class="header">
+        <p>SPLI <br> TTER</p>
+    </div>
+
+    <div class="container">
+        <div class="bill">
+            <p> bill</p>
+            <i class="fa-solid fa-dollar-sign"></i>
+            <div class="input_bill_container">
+
+            </div>
+            <input type="text" class="input_bill">
+        </div>
+        <div class="tip">
+            <p>Select Tip %</p>
+            <div class="buttons">
+                <button class="tip-button">15%</button>
+                <button class="tip-button">10%</button>
+                <button class="tip-button">15%</button>
+                <button class="tip-button">25%</button>
+                <button class="tip-button">50%</button>
+                <input class="input_tip" type="text" value="Custom">
+            </div>
+        </div>
+        <div class="people">
+            <p>Number of people</p>
+            <div class="input_people_container">
+                <i class="fa-solid fa-user"></i>
+                <input type="text" class="input_people">
+            </div>div>
+        </div>    
+        <div class="outcome">
+            <div class="amount">
+                <p> Tip Amount</p>
+                <p class="tip_amount"></p>
+                <p>/ person</p>
+            </div>
+            <div class="total">
+                <p> Total</p>
+                <p class="total_amount"></p>
+                <p> / person</p>
+            </div>
+            <button class="button">RESET</button>
+        </div>
+    </div>
+   <script src="https://kit.fontawesome.com/6f1527f147.js" crossorigin="anonymous"></script>
+</body>
+</html>
