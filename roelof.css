@@ -34,11 +34,34 @@ button {
     border-radius: 10px;   
 }
 
+button:hover{
+    background-color: var(--strong_cyan);
+    cursor: pointer; 
+}
+
+
+input{
+    border: none;
+    background-color: var(--light_grayish_cyan2);
+    color: var(--very_dark_cyan);
+    font-size: 24px; 
+    text-align: right;
+    padding-right: 20px;    
+}
+
+p{
+    padding-bottom: 5px;
+}
+
 .header {
     display: flex;
     justify-content: center;
     margin-top: 50px;
     margin-bottom: 50px;  
+}
+
+.input-container{
+    padding-bottom: 30px;
 }
 
 .container{
@@ -62,20 +85,18 @@ button {
     justify-content: space-between;
     background-color: var(--light_grayish_cyan2);
     padding-top: 8px; 
-    padding-bottom: 8px;   
+    padding-bottom: 8px;
+    border: 2px solid var(--light_grayish_cyan2);
+    border-radius: 5px;     
 }
 
-.input_bill{
-    width: 285px;
-    background-color: var(--light_grayish_cyan2);
-    color: var(--very_dark_cyan); 
-    border: none;
-    text-align: right;
-    font-size: 24px;
-    padding-right: 20px;
+.bill_input:hover{
+    border: 2px solid var(--strong_cyan);
+    border-radius: 5px;
+    cursor: pointer;  
 }
 
-.fa-dollar-sign{
+.fa-dollar-sign ,.fa-user{
     color: var( --light_grayish_cyan1);
     padding-left: 20px; 
 }
@@ -108,6 +129,65 @@ button {
     font-size: 24px;
     text-align: right;
 }
+
+.input_tip:hover{
+    border: 2px solid var(--strong_cyan);
+    cursor: pointer; 
+}
+
+.outcome{
+    background-color: var(--very_dark_cyan); 
+    border-radius: 15px;
+}
+
+.tip_amount_text2 {
+    color: var(--dark_grayish_cyan2); 
+}
+
+.tip_amount_text{
+    color: var(--white); 
+}
+
+.tip_amount{
+    color: var(--strong_cyan);
+    font-size: 24px;  
+}
+
+.amount{
+    padding-top: 50px;
+    padding-bottom: 30px;  
+}
+
+.display_container{
+    padding-left: 30px; 
+    width: 320px; 
+    display: flex;
+    flex-direction: row;  
+}
+
+.left   {
+    width: 50%; 
+}
+
+.right{
+    width:50%;
+}
+
+.button{
+    margin-top: 30px;
+    margin-bottom: 30px; 
+    margin-left: 20px;
+    width: 270px;
+    background-color: var(--strong_cyan);
+    color: var(--very_dark_cyan);
+    border: none;
+}
+
+.button:hover{
+    background-color: var(--light_grayish_cyan1) ;
+}
+
+
 
 
 

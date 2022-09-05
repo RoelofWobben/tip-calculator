@@ -18,45 +18,64 @@
     </div>
 
     <div class="container">
-        <div class="bill">
-            <p> Bill</p>
-            <div class="bill_input">
-                <i class="fa-solid fa-dollar-sign"></i>
-                <div class="container-input-top">
-                    <input type="text" class="input_bill" value="100.00">
-                </div>    
+       <div class="input-container"> 
+            <div class="bill">
+                <p> Bill</p>
+                <div class="bill_input">
+                    <i class="fa-solid fa-dollar-sign"></i>
+                    <div class="container-input">
+                        <input type="text" value="100.00">
+                    </div>    
+                </div>
             </div>
-        </div>
-        <div class="tip">
-            <p>Select Tip %</p>
-            <div class="buttons">
-                <button class="tip-button">5%</button>
-                <button class="tip-button">10%</button>
-                <button class="tip-button">15%</button>
-                <button class="tip-button">25%</button>
-                <button class="tip-button">50%</button>
+            <div class="tip">
+                <p>Select Tip %</p>
+                <div class="buttons">
+                    <button class="tip-button">5%</button>
+                    <button class="tip-button">10%</button>
+                    <button class="tip-button">15%</button>
+                    <button class="tip-button">25%</button>
+                    <button class="tip-button">50%</button>
+                </div>
+                <input class="input_tip" type="text" value="Custom">
             </div>
-            <input class="input_tip" type="text" value="Custom">
-        </div>
-        <div class="people">
-            <p>Number of people</p>
-            <div class="input_people_container">
-                <i class="fa-solid fa-user"></i>
-                <input type="text" class="input_people">
+            <div class="bill">
+                <p> Number of People</p>
+                <div class="bill_input">
+                    <i class="fa-solid fa-user"></i>
+                    <div class="container-input">
+                        <input type="text" value="1">
+                    </div>    
+                </div>
             </div>
-        </div>    
+        </div>     
         <div class="outcome">
             <div class="amount">
-                <p> Tip Amount</p>
-                <p class="tip_amount"></p>
-                <p>/ person</p>
+                <div class="display_container">
+                    <div class="left">
+                        <p class="tip_amount_text"> Tip Amount</p>
+                        <p class="tip_amount_text2"> / person</p>
+                    </div>
+                    <div class="right">
+                        <p class="tip_amount">$250.25</p>
+                    </div>
+                </div> 
+                
             </div>
             <div class="total">
-                <p> Total</p>
-                <p class="total_amount"></p>
-                <p> / person</p>
-            </div>
-            <button class="button">RESET</button>
+                <div class="display_container">
+                    <div class="left">
+                        <p class="tip_amount_text"> Total</p>
+                        <p class="tip_amount_text2"> / person</p>
+                    </div>
+                    <div class="right">
+                        <p class="tip_amount">$250.25</p>
+                    </div>
+                </div>
+            </div>    
+            <div class="button_container">
+                    <button class="button">RESET</button>
+            </div>    
         </div>
     </div>
    <script src="https://kit.fontawesome.com/6f1527f147.js" crossorigin="anonymous"></script>
