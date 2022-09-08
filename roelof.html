@@ -1,83 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- displays site properly based on user's device -->
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <link href="./roelof.css" rel="stylesheet">
-  <title>Frontend Mentor | Tip calculator app</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="./roelof.css" rel="stylesheet">
+    <title>Frontend Mentor | Tip calculator app</title>
 </head>
-<body>
-      <!-- veranderen in het gegeven logo -->
-    <div class="header">
-       <img src="./images/logo.svg">
-    </div>
 
-    <div class="container">
-       <div class="input-container"> 
-            <div class="bill">
-                <p> Bill</p>
-                <div class="bill_input">
-                    <i class="fa-solid fa-dollar-sign"></i>
-                    <div class="container-input">
-                        <input type="text" value="100.00">
-                    </div>    
-                </div>
-            </div>
-            <div class="tip">
-                <p>Select Tip %</p>
-                <div class="buttons">
-                    <button class="tip-button">5%</button>
-                    <button class="tip-button">10%</button>
-                    <button class="tip-button">15%</button>
-                    <button class="tip-button">25%</button>
-                    <button class="tip-button">50%</button>
-                </div>
-                <input class="input_tip" type="text" value="Custom">
-            </div>
-            <div class="bill">
-                <p> Number of People</p>
-                <div class="bill_input">
-                    <i class="fa-solid fa-user"></i>
-                    <div class="container-input">
-                        <input type="text" value="1">
-                    </div>    
-                </div>
-            </div>
-        </div>     
-        <div class="outcome">
-            <div class="amount">
-                <div class="display_container">
-                    <div class="left">
-                        <p class="tip_amount_text"> Tip Amount</p>
-                        <p class="tip_amount_text2"> / person</p>
-                    </div>
-                    <div class="right">
-                        <p class="tip_amount">$250.25</p>
-                    </div>
-                </div> 
-                
-            </div>
-            <div class="total">
-                <div class="display_container">
-                    <div class="left">
-                        <p class="tip_amount_text"> Total</p>
-                        <p class="tip_amount_text2"> / person</p>
-                    </div>
-                    <div class="right">
-                        <p class="tip_amount">$250.25</p>
+<body>
+    <div class="calculator_container">
+        <div class="header">
+            <img src="./images/logo.svg">
+        </div>
+
+        <div class="container">
+            <div class="input-container">
+                <div class="bill">
+                    <p> Bill</p>
+                    <div class="error error_amount"></div>
+                    <div class="bill_input">
+                        <i class="fa-solid fa-dollar-sign"></i>
+                        <div class="container-input">
+                            <input type="text" value="0.00" class="amount">
+                        </div>
                     </div>
                 </div>
-            </div>    
-            <div class="button_container">
+                <div class="tip">
+                    <p>Select Tip %</p>
+                    <div class="buttons">
+                        <button class="tip-button">5%</button>
+                        <button class="tip-button">10%</button>
+                        <button class="tip-button">15%</button>
+                        <button class="tip-button">25%</button>
+                        <button class="tip-button">50%</button>
+                    </div>
+                    <input class="input_tip" type="text" value="Custom">
+                </div>
+                <div class="bill">
+                    <p> Number of People</p>
+                    <div class="bill_input">
+                        <i class="fa-solid fa-user"></i>
+                        <div class="container-input">
+                            <input type="text" value="1">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="outcome">
+                <div class="amount">
+                    <div class="display_container">
+                        <div class="left">
+                            <p class="tip_amount_text"> Tip Amount</p>
+                            <p class="tip_amount_text2"> / person</p>
+                        </div>
+                        <div class="right">
+                            <p class="tip_amount">$0.00</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="total">
+                    <div class="display_container">
+                        <div class="left">
+                            <p class="tip_amount_text"> Total</p>
+                            <p class="tip_amount_text2"> / person</p>
+                        </div>
+                        <div class="right">
+                            <p class="tip_amount">$0.00</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="button_container">
                     <button class="button">RESET</button>
-            </div>    
+                </div>
+            </div>
         </div>
     </div>
-   <script src="https://kit.fontawesome.com/6f1527f147.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/6f1527f147.js" crossorigin="anonymous"></script>
+    <script src="./roelof.js" type="text/javascript"></script>
 </body>
+
 </html>
