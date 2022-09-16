@@ -51,6 +51,10 @@ input {
     width: 275px;
 }
 
+input:focus{
+    outline: none;  
+}
+
 p {
     padding-bottom: 5px;
     font-size: 20px; 
@@ -218,6 +222,8 @@ p {
     .outcome {
         width: 50%;
         margin-bottom: 0px;
+        padding-top: 40px; 
+        padding-bottom: 40px; 
     }
     .buttons {
         display: grid;
@@ -235,6 +241,7 @@ p {
     .display_container {
         padding-right: 0px;
         width: 100%;
+        padding-bottom: 35px; 
     }
     .right {
         width: 170px;
