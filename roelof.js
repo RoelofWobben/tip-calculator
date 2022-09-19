@@ -36,7 +36,7 @@ class TipCalculator{
     validateAmount = () => {
         if (!this.validateFormatAmount() && this.isNotNull()) {
             console.log('error message');
-            displayErrorMessage('invalid input'); 
+            this.displayErrorMessage('invalid input'); 
         }; 
     }
 
