@@ -26,7 +26,7 @@ class TipCalculator{
 
     //Display Error Messages 
     displayErrorMessage =  (error) => {
-        let errorClass = document.createClass('error');
+        let errorClass = document.createElement('error');
         errorClass.innerHTML = error;
         errorClass.insertBefore('money_input');  
     }
