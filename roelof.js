@@ -1,9 +1,6 @@
-let money = document.querySelector('.amount'); 
-let inputAmountDiv = document.querySelector('.bill_input')
-let error_amount = document.querySelector('.error_amount');
-let tip  = document.querySelector('.tipPerPerson');
-let total = document.querySelector('.totalPerPerson');
-let buttons = document.querySelectorAll('buttons')
+let money = document.querySelector('#amount');
+let money_input = document.querySelector('#amount-input')
+
 
 class TipCalculator{
 
@@ -13,101 +10,52 @@ class TipCalculator{
         this.numberOfPersons = persons ; 
     }
 
-    formattedAmount(amount) {
-        return  new Intl.NumberFormat(
-            'en-us',
-            {
-                style: 'currency',
-                currency: 'USD'
-            }
-    ).format(amount)}; 
+    //Validation functions
+    
+    //Validate format amount 
 
-    calculatePerPerson() {
-        // check if all the data is there 
-        if (calculator.amount === "0.00"){
-            return
-        }
-        // convert to floats
-        let ftip = parseFloat(calculator.tip);
-        let famount = parseFloat(calculator.amount);
-        let fpersons = parseInt(calculator.numberOfPersons); 
-        // calculateTipPerPerson
-        let tipPerPerson = (famount * ftip)/fpersons;
-        // display the outcome
-        tip.innerHTML = this.formattedAmount(tipPerPerson);
-        // calculateTotalPerPerson
-        let totalPerPerson = (famount + tipPerPerson)/fpersons; 
-        //display the outcome 
-        total.innerHTML = this.formattedAmount(totalPerPerson);  
+    validateFormatAmount = () => {
+        var reg = /(?=.*?\d)^\$?(([1-9]\d{0,2}(,\d{3})*)|\d+)?(\.\d{1,2})?$/;
+        return reg.test(this.amount);
+         
     }
 
-   displayError(text, inputfield, errorfield) {
-        if (text === ""){
-            inputfield.style.border = "none"
-            errorfield.innerHTML = "" ; 
-        }
-        else {
-            inputfield.style.border = "2px solid red"
-            errorfield.innerHTML = "<i class='fa-sharp fa-solid fa-circle-exclamation'></i>" + " "  + text;  
-        }
+    isNotNull = () => {
+        let number = parseFloat(this.amount); 
     }
 
-    isValidFormat() {
-        var reg = /\d{1,10}(\.\d{1,2})?/;
-        if (!reg.test(this.amount)){
-           this.displayError('Is not valid amount', inputAmountDiv, error_amount);
-           return false;  
-        }
-        this.displayError("", inputAmountDiv, error_amount);
-        return true; 
+    //Display Error Messages 
+    displayErrorMessage =  (error) => {
+        let error = document.createClass('error');
+        error.innerHTML = error;
+        error.insertBefore('money_input');  
     }
 
-    isNotNull() {
-        if (this.amount === "0"){
-            this.displayError('It is not allowed to be zero', inputAmountDiv, error_amount);
-            return false;
-        } 
-        this.displayError("", inputAmountDiv, error_amount); 
-        return true; 
+    //validate amount input 
+
+    validateAmount = () => {
+        if (!this.validateFormatAmount() && this.isNotNull()) {
+            displayErrorMessage('invalid input'); 
+        }; 
     }
 
-    isNotNegative() {
-        let number = parseFloat(this.amount);
-        if (number < 0){
-            this.displayError("Amount cannot be negative", inputAmountDiv, error_amount);
-            return false; 
-        }
-        this.displayError("", inputAmountDiv, error_amount); 
-        return true;  
-    }
-
-    validateAmountInput() {
-        return (this.isValidFormat() && this.isNotNull()) && this.isNotNegative(); 
-    }
+    
 }
 
 let calculator =  new TipCalculator(0.00, 0.00, 1); 
 
 //add eventListener to the amount input 
 
-money.addEventListener('blur', () => {
-    calculator.amount = money.value; 
-    isValid = calculator.validateAmountInput();
-    if (!isValid){
-        calculator.amount = "0.00";
-        console.log(calculator); 
-        money.value = calculator.amount; 
-    } else {
-        calculator.calculatePerPerson();
-    }  
-});
+money.addEventListener('blur', (e) => {
+    // set entered amount in the class 
+    calculator.amount = e.target.value; 
+    // Validate the input
+    calculator.validateAmount(); 
+
+})
 
 //add eventListeners to the buttons
 
-buttons.forEach('click', () => {
-    // add value to the object
-    // calculate  
-})
 
 
 
@@ -115,3 +63,5 @@ buttons.forEach('click', () => {
 
 
 
+
+   

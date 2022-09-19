@@ -15,72 +15,24 @@
 </head>
 
 <body>
-    <div class="calculator_container">
+    <div class="container">
         <div class="header">
             <img src="./images/logo.svg">
         </div>
 
-        <div class="container">
-            <div class="input-container">
-                <div class="bill">
-                    <p> Bill</p>
-                    <div class="error error_amount"></div>
-                    <div class="bill_input">
-                        <i class="fa-solid fa-dollar-sign"></i>
-                        <div class="container-input">
-                            <input type="text" value="0.00" class="amount">
-                        </div>
-                    </div>
+        <div class="calculator_container">
+            <form>
+                <div class="left">
+                   <label for="amount">Bill</label>
+                   <div class="amount_input">
+                     <img src="./images/icon-dollar.svg">
+                     <input type="text" id="amount" value="0"> 
+                   </div>
                 </div>
-                <div class="tip">
-                    <p>Select Tip %</p>
-                    <div class="buttons">
-                        <button class="tip-button" value="0.05">5%</button>
-                        <button class="tip-button" value="0.1">10%></button>
-                        <button class="tip-button" value="0.15">15%</button>
-                        <button class="tip-button" value="0.25">25%</button>
-                        <button class="tip-button" value="0.5">50%</button>
-                    </div>
-                    <input class="input_tip" type="text" value="Custom">
+                <div class="right">
+                  <p> right-side</p>
                 </div>
-                <div class="bill">
-                    <p> Number of People</p>
-                    <div class="bill_input">
-                        <i class="fa-solid fa-user"></i>
-                        <div class="container-input">
-                            <input type="text" value="1">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="outcome">
-                <div class="amount">
-                    <div class="display_container">
-                        <div class="left">
-                            <p class="tip_amount_text"> Tip Amount</p>
-                            <p class="tip_amount_text2"> / person</p>
-                        </div>
-                        <div class="right">
-                            <p class="tip_amount tipPerPerson">$0.00</p>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="total">
-                    <div class="display_container">
-                        <div class="left">
-                            <p class="tip_amount_text"> Total</p>
-                            <p class="tip_amount_text2"> / person</p>
-                        </div>
-                        <div class="right">
-                            <p class="tip_amount totalPerPerson">$0.00</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="button_container">
-                    <button class="button">RESET</button>
-                </div>
-            </div>
+            </form>
         </div>
     </div>
     <script src="https://kit.fontawesome.com/6f1527f147.js" crossorigin="anonymous"></script>
