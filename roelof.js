@@ -21,7 +21,7 @@ class TipCalculator{
     }
 
     isNotNull = () => {
-        let number = parseFloat(this.amount); 
+        return parseFloat(this.amount) !== 0 ; 
     }
 
     //Display Error Messages 
