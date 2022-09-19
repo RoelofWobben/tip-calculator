@@ -26,9 +26,9 @@ class TipCalculator{
 
     //Display Error Messages 
     displayErrorMessage =  (error) => {
-        let error = document.createClass('error');
-        error.innerHTML = error;
-        error.insertBefore('money_input');  
+        let errorClass = document.createClass('error');
+        errorClass.innerHTML = error;
+        errorClass.insertBefore('money_input');  
     }
 
     //validate amount input 
