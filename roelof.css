@@ -77,3 +77,19 @@ input:focus{
     border-radius: 5px;
 }
 
+.errormessage{
+    color: red;
+    visibility: hidden; 
+}
+
+.buttons-container {
+    
+}
+
+[aria-invalid="true"] {
+    outline: 5px solid red; 
+}
+
+[aria-invalid="true"] ~.errormessage {
+    visibility: visible; 
+}
