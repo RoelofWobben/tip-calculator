@@ -21,32 +21,40 @@
         </div>
 
         <div class="calculator_container">
-            <form>
+            <form class="form">
                 <div class="left">
                         
                     <label for="amount">Bill</label>
                     <div class="amount_input">
                         <img src="./images/icon-dollar.svg">
-                        <input type="number" id="amount" value="0" aria-invalid="false" aria-errormessage="err1" pattern="/(?=.*?\d)^\$?(([1-9]\d{0,2}(,\d{3})*)|\d+)?(\.\d{1,2})?$/" />
-                        <!-- <input type="number" step="0.01" min="0" inputmode="numeric" id="amount" value="0" oninvalid="this.setCustomValidity('Invalid input: is not a amount')" pattern=".{4,}"/> -->
-
+                        <input type="text" id="amount" value="0" aria-invalid="false" aria-errormessage="err1" pattern="/(?=.*?\d)^\$?(([1-9]\d{0,2}(,\d{3})*)|\d+)?(\.\d{1,2})?$/" />
                     </div>
                     <span id="err1" class="errormessage">Error: Enter a valid email address</span> 
                 </div>
                 <div class="buttons_container">
+                   <p> Select tip %</p>        
                     <div class="buttons">
-                        <input type="radio" id="five" name="percentage" value="0.05">
-                        <label for="five">5</label><br>
+              
+                        <input type="radio" id="five" name="percentage" value="0.05" class="button">
+                        <label for="five">5 %</label>
                         <input type="radio" id="ten" name="percentage" value="0.10">
-                        <label for="ten">10</label><br>
+                        <label for="ten">10 %</label>
                         <input type="radio" id="fifteen" name="percentage" value="0.15">
-                        <label for="fifteen">15</label><br>
+                        <label for="fifteen">15 %</label>
                         <input type="radio" id="twente-five" name="percentage" value="0.25">
-                        <label for="twente-five">25</label><br>
+                        <label for="twente-five">25 %</label>
                         <input type="radio" id="fifty" name="percentage" value="0.50">
-                        <label for="fifty">50</label><br>
+                        <label for="fifty">50 %</label>
                     </div>
+                    <input type="text" id="percentage" value="Custom" />
                 </div>
+                <label for="person">Number of people</label>
+                    <div class="amount_input">
+                        <img src="./images/icon-person.svg">
+                        <input type="text" id="person" value="0" aria-invalid="false" aria-errormessage="err1" pattern="/(?=.*?\d)^\$?(([1-9]\d{0,2}(,\d{3})*)|\d+)?(\.\d{1,2})?$/" />
+                    </div>
+                    <span id="err1" class="errormessage">Error: Enter a valid email address</span> 
+
                <div class="right">
                   <p> right-side</p>
                 </div>
