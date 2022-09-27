@@ -132,10 +132,7 @@ input:focus{
     color: var(--very_dark_cyan)
 }
 
-.hidden {
-    display: none
-  }
-  
-  .hint {
+.hint {
     color: red;
-  }
+}
+

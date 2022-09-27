@@ -23,11 +23,18 @@ let calculator =  new TipCalculator(0.00, 0.00, 1);
 
 //add eventListeners to the buttons
 
-money.addEventListener('blur', (e) =>{
-    let checked = money.checkValidity(); 
-    console.log(checked);
+money.addEventListener('blur', (e) => {
+    money.checkValidity();
+    let checked = money.validationMessage.trim()
+    message.hidden = checked === "";
+  console.log(checked, money.validationMessage.trim() === "")
+  });
 
-});
+
+  money.addEventListener('focus', (e) => {
+    document.getElementById("usernameHint").hidden = true;
+  });
+  
 
 buttons.forEach(function(button){
     button.addEventListener('change', (e) => {
