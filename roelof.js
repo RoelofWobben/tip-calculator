@@ -1,11 +1,12 @@
 
 // Methods to make the html avaible in javascript 
 let money = document.querySelector('#amount');
-let money_input = document.querySelector('#amount-input')
+let money_input = document.querySelector('.amount_input')
 let error = document.querySelector(".errormessage");
 let buttons = document.querySelectorAll(".buttons");
 let custom = document.querySelector('#percentage');
 let person = document.querySelector('#person');
+let form = document.querySelector('.form'); 
 
 
 // Class to hold the variables and functions 
@@ -20,20 +21,13 @@ class TipCalculator{
 
 let calculator =  new TipCalculator(0.00, 0.00, 1); 
 
-//add eventListener to the amount input 
-
-
-
-// Add invalid eventListener so the error message can be shown or hidden after a (in)valid input 
-money.addEventListener('invalid', (e) => {
-    console.log('invalid')
-    //show error because aria-live is set to true 
-    money.setAttribute('aria-invalid', 'true')
-}); 
-
-   
-
 //add eventListeners to the buttons
+
+money.addEventListener('blur', (e) =>{
+    let checked = money.checkValidity(); 
+    console.log(checked);
+
+});
 
 buttons.forEach(function(button){
     button.addEventListener('change', (e) => {

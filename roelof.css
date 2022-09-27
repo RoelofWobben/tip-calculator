@@ -80,18 +80,6 @@ input:focus{
     border-radius: 5px;
 }
 
-.errormessage{
-    color: red;
-    visibility: hidden; 
-}
-
-[aria-invalid="true"] {
-    outline: 5px solid red; 
-}
-
-[aria-invalid="true"] ~.errormessage {
-    visibility: visible; 
-}
 
 .buttons_container{
     position: relative;
@@ -144,3 +132,10 @@ input:focus{
     color: var(--very_dark_cyan)
 }
 
+.hidden {
+    display: none
+  }
+  
+  .hint {
+    color: red;
+  }

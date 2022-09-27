@@ -25,11 +25,12 @@
                 <div class="left">
                         
                     <label for="amount">Bill</label>
+                    <p class="hint" id="usernameHint" >Invalid input: it need to be a amount</p>
                     <div class="amount_input">
                         <img src="./images/icon-dollar.svg">
-                        <input type="text" id="amount" value="0" aria-invalid="false" aria-errormessage="err1" pattern="/(?=.*?\d)^\$?(([1-9]\d{0,2}(,\d{3})*)|\d+)?(\.\d{1,2})?$/" />
+                        <input type="text" id="amount" value="0" pattern="/(?=.*?\d)^\$?(([1-9]\d{0,2}(,\d{3})*)|\d+)?(\.\d{1,2})?$/" />
+                        <div aria-live="assertive" id="message"></div>
                     </div>
-                    <span id="err1" class="errormessage">Error: Enter a valid email address</span> 
                 </div>
                 <div class="buttons_container">
                    <p> Select tip %</p>        
