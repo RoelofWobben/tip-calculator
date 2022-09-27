@@ -6,7 +6,8 @@ let error = document.querySelector(".errormessage");
 let buttons = document.querySelectorAll(".buttons");
 let custom = document.querySelector('#percentage');
 let person = document.querySelector('#person');
-let form = document.querySelector('.form'); 
+let form = document.querySelector('.form');
+const message = document.getElementById("usernameHint"); 
 
 
 // Class to hold the variables and functions 
@@ -27,20 +28,16 @@ money.addEventListener('blur', (e) => {
     money.checkValidity();
     let checked = money.validationMessage.trim()
     message.hidden = checked === "";
-  console.log(checked, money.validationMessage.trim() === "")
-  });
+});
 
 
-  money.addEventListener('focus', (e) => {
-    document.getElementById("usernameHint").hidden = true;
-  });
-  
+money.addEventListener('focus', (e) => {
+   document.getElementById("usernameHint").hidden = true;
+});
 
 buttons.forEach(function(button){
     button.addEventListener('change', (e) => {
         calculator.tip = e.target.value;
-        //add class to selected button 
-
     })
 })
 
