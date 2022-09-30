@@ -127,12 +127,13 @@ input:focus{
     text-align: right;
 }
 
-input[type="radio"]:checked{
+input[type="radio"]:checked + label{
     background-color:var(--strong_cyan); 
-    color: var(--very_dark_cyan)
+    color: var(--very_dark_cyan);
+    border: 1px solid var(--strong-cyan); 
 }
 
-.hint {
+.error {
     color: red;
 }
 

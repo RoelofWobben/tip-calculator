@@ -23,16 +23,17 @@
         <div class="calculator_container">
             <form class="form">
                 <div class="left">
-                        
-                    <label for="amount">Bill</label>
-                    <p class="hint" id="usernameHint" hidden>Invalid input: it need to be an amount</p>
-                    <div class="amount_input">
-                        <img src="./images/icon-dollar.svg">
-                            <input type="text" id="amount" value="0" pattern="(?=.*?\d)^\$?(([1-9]\d{0,2}(,\d{3})*)|\d+)?(\.\d{1,2})?$" />
-                    <div aria-live="assertive" id="message"></div>
-                </div>
+                   <div class="amount_container">     
+                        <label for="amount">Bill</label>
+                        <p class="error"></p>
+                        <div class="amount_input">
+                            <img src="./images/icon-dollar.svg">
+                            <input type="text" id="amount" value="0" />
+                        </div>
+                    </div>
                 <div class="buttons_container">
-                   <p> Select tip %</p>        
+                   <p> Select tip %</p>
+                   <p class="error"></p>        
                     <div class="buttons">
                         <input type="radio" id="five" name="percentage" value="0.05" class="button">
                         <label for="five">5 %</label>
