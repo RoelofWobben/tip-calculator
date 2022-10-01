@@ -26,93 +26,102 @@ let calculator =  new TipCalculator(0.00, 0.00, 1);
 
 setError = (element, errorMessage) => {
     const parent = element.parentElement;
-    console.log(parent); 
     const paragraph = parent.querySelector('.error')
-    console.log(paragraph); 
     paragraph.textContent = errorMessage;
+    element.style.border = "3px solid red"; 
 }
 
-// Validations 
-inputLowerZero = (number) =>{
-    console.log(number < 0); 
-    return number < 0 ; 
+// Validations
+
+
+//Do all the checks
+
+const isInputValid = (inputValue, ...validators) => {
+    const validationResult = {
+      isValid: true,
+      errorsMessages: []
+    }
+    
+    validators.forEach(validator => {
+      const {isValid, errorMessage} = validator(inputValue)
+      if (!isValid) {
+        validationResult.isValid = false
+        validationResult.errorsMessages.push(errorMessage)
+      }
+    })
+    
+    return validationResult
 }
 
-inputZero = (number) => {
-    return number === 0; 
+// Check if the float is not smaller then zero 
+
+
+const isNonNegativeFloat = (inputValue) => {
+    const value = parseFloat(inputValue); 
+    if (value < 0 ){
+        return {
+            isValid: false,
+            errorMessage : 'Must be a postive'
+        }
+    };
+    return {
+        isValid : true,
+    }
 }
 
 
-checkValidityAmount = (number) => {
-    let input = parseFloat(number); 
-   
-   // check if amount is lower then zero 
-   if (inputLowerZero(input)) {
-     setError(money_input, "Cannot be lower then zero");
-     money_input.style.border = "3px solid red";
-     return false;  
-   }
-   
-   // check if amount is zero 
+// Check if input is not zero 
 
-   if (inputZero(input)) {
-     setError(money_input, "Cannot be zero")
-     money_input.style.border = "3px solid red";
-    return false;   
-   }
-
-   //check if input is of format x or x.yz 
-   reg = /(?=.*?\d)^\$?(([1-9]\d{0,2}(,\d{3})*)|\d+)?(\.\d{1,2})?$/; 
-   if (!reg.test(input)){
-     setError(money_input, "is not a amount");
-     money_input.style.border = "3px solid red";
-     return false;    
-   }
-
-   //if everything is not false , it schould be a valid input 
-
-   return true; 
+const isNotZero = (inputValue) => {
+    const value = parseFloat(inputValue)
+    console.log(value); 
+    if (value === 0) {
+        return {
+            isValid: false, 
+            errorMessage: 'Cannot be zero '
+        }
+    }
+    return {
+        isValid: true, 
+    }
 }
 
-checkValidityPercentage = (number) => {
+// Check if the amount looks like x or x.xx 
 
-    let valid = true;
-    let input = parseFloat(number); 
-
-   // check if amount is lower then zero 
-   if (inputLowerZero(input)) {
-     setError(custom, "Cannot be lower then zero");
-     custom.style.border = "3px solid red";
-     return false;  
-   }
-   
-   // check if amount is zero 
-
-   if (inputZero(input)) {
-     setError(custom, "Cannot be zero")
-     custom.style.border = "3px solid red";
-     return false;  
-   }
-
-   //check if input is of format x or x.yz 
-   reg = /(?=.*?\d)^\$?(([1-9]\d{0,2}(,\d{3})*)|\d+)?(\.\d{1,2})?$/; 
-   if (!reg.test(input)){
-     setError(custom, "is not a percentage");
-     custom.style.border = "3px solid red";
-     return false;
-   }
-
-   return true; 
+const isValidFormatAmount = (inputValue) => {
+    reg = /(?=.*?\d)^\$?(([1-9]\d{0,2}(,\d{3})*)|\d+)?(\.\d{1,2})?$/; 
+    const isValid = reg.test(inputValue)
+    if (!isValid) {
+        return {
+            isValid, 
+            errorMessage : "Must be a amount",
+        }
+    }
+    return (isValid);  
 }
 
+const isValidFormatPercentage = (inputValue) => {
+    reg = /(?=.*?\d)^\$?(([1-9]\d{0,2}(,\d{3})*)|\d+)?(\.\d{1,2})?$/; 
+    const isValid = reg.test(inputValue)
+    if (!isValid) {
+        return {
+            isValid, 
+            errorMessage : "Must be a percentage",
+        }
+    }
+    return (isValid);  
+}
 //add eventListeners to the amount field
 
 money.addEventListener('blur', (e) => {
     let input = e.target.value; 
-    if (checkValidityAmount(input)){
-        calculator.amount = input; 
+    isValid = isInputValid(input, isNonNegativeFloat, isNotZero, isValidFormatAmount);
+    if (!isValid.isvalid){
+        setError(money_input, isValid.errorsMessages[0])
     }
 });
+
+// let the error message disappear
 
 money.addEventListener('focus',() => {
     setError(money_input, "")
@@ -130,10 +139,14 @@ buttons.forEach(function(button){
 
 // add eventListener to the little inout field next to the buttons
 percentage.addEventListener('blur', (e) => {
-    if (checkValidityPercentage(e.target.value)) {
-        calculator.tip = e.target.value; 
-    }; 
+    let input = e.target.value; 
+    isValid = isInputValid(input, isNonNegativeFloat, isNotZero, isValidFormatPercentage);
+    if (!isValid.isvalid){
+        setError(custom, isValid.errorsMessages[0])
+    }
 });
+
+// Let the erors disappear
 
 percentage.addEventListener('focus', () => {
     setError(custom, "");
