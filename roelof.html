@@ -24,16 +24,20 @@
             <form class="form">
                 <div class="left">
                    <div class="amount_container">     
-                        <label for="amount">Bill</label>
-                        <p class="error"></p>
+                        <div class="header_container">
+                            <label for="amount">Bill</label>
+                            <p class="error"></p>
+                        </div>    
                         <div class="amount_input">
                             <img src="./images/icon-dollar.svg">
                             <input type="text" id="amount" value="0" />
                         </div>
                     </div>
                 <div class="buttons_container">
-                   <p> Select tip %</p>
-                   <p class="error"></p>        
+                    <div class="header_container">
+                        <p> Select tip %</p>
+                        <p class="error"></p>
+                    </div>            
                     <div class="buttons">
                         <input type="radio" id="five" name="percentage" value="0.05" class="button">
                         <label for="five">5 %</label>
@@ -48,15 +52,22 @@
                     </div>
                     <input type="text" id="percentage" value="Custom" />
                 </div>
-                <label for="person">Number of people</label>
-                    <div class="amount_input">
+                <div class="person_container">
+                    <div class="header_container">
+                        <label for="person">Number of persons</label>
+                        <p class="error"></p>
+                    </div>    
+                    <div class="person_input">
                         <img src="./images/icon-person.svg">
-                        <input type="text" id="person" value="0" aria-invalid="false" aria-errormessage="err2" pattern="/(?=.*?\d)^\$?(([1-9]\d{0,2}(,\d{3})*)|\d+)?(\.\d{1,2})?$/" />
+                        <input type="text" id="person" value="0" />
                     </div>
-                    <span id="err2" class="errormessage">Error: Enter a valid email address</span> 
-
-               <div class="right">
-                  <p> right-side</p>
+                </div>
+                <div class="right">
+                    <label for="tipPerPerson" class="tip">
+                        <span class="white">Tip amount</span>
+                        <span class="white">/ person</span>
+                    </label>
+                    <output class="tipPerPerson"></output>
                 </div>
             </form>
         </div>

@@ -5,9 +5,8 @@ let money_input = document.querySelector('.amount_input')
 let buttons = document.querySelectorAll(".buttons");
 let custom = document.querySelector('#percentage');
 let person = document.querySelector('#person');
-let form = document.querySelector('.form');
-const message = document.getElementById("usernameHint"); 
-
+let person_input = document.querySelector('.person_input');
+let tipPerPerson = document.querySelector('.tipPerPerson');  
 
 // Class to hold the variables and functions 
 class TipCalculator{
@@ -19,7 +18,7 @@ class TipCalculator{
     }
 }
 
-let calculator =  new TipCalculator(0.00, 0.00, 1);
+let calculator =  new TipCalculator(0.00, 0.00, 0);
 
 
 // Show ErrorMessage 
@@ -28,7 +27,49 @@ setError = (element, errorMessage) => {
     const parent = element.parentElement;
     const paragraph = parent.querySelector('.error')
     paragraph.textContent = errorMessage;
-    element.style.border = "3px solid red"; 
+    element.style.border = "2px solid red"; 
+}
+
+//Calculations 
+
+const calculateTotalPerPerson = () =>{
+    
+    // Doe niks al het bedrag of aantal personen niet ingevuld is
+    
+    if (calculator.amount === 0 || calculator.numberOfPersons === 0) {
+        return 
+    }
+
+    // Convert all values to integers or floats 
+    let amount = parseFloat(calculator.amount); 
+    let persons = parseInt(calculator.numberOfPersons);
+    let tip = parseFloat(calculator.tip);  
+    
+    // calculate the tip per person 
+
+    let outcome = (amount * ( 1 + tip)) / persons; 
+    
+    return amount; 
+}
+
+const calculateTipPerPerson = () => {
+
+    // Doe niks al het bedrag of aantal personen niet ingevuld is
+    
+     if (calculator.amount === 0 || calculator.numberOfPersons === 0) {
+        return 
+    }
+
+    // Convert all values to integers or floats 
+    let amount = parseFloat(calculator.amount); 
+    let persons = parseInt(calculator.numberOfPersons);
+    let tip = parseFloat(calculator.tip);  
+    
+    // calculate the tip per person 
+
+    let outcome = (amount * tip) / persons;
+    
+    tipPerPerson.innerHTML = "$" + " " + outcome;  
 }
 
 // Validations
@@ -74,7 +115,6 @@ const isNonNegativeFloat = (inputValue) => {
 
 const isNotZero = (inputValue) => {
     const value = parseFloat(inputValue)
-    console.log(value); 
     if (value === 0) {
         return {
             isValid: false, 
@@ -97,9 +137,13 @@ const isValidFormatAmount = (inputValue) => {
             errorMessage : "Must be a amount",
         }
     }
-    return (isValid);  
+    return {
+        isValid: true,
+        
+    }
 }
 
+// Check if percentage is of format of x of x.xx
 const isValidFormatPercentage = (inputValue) => {
     reg = /(?=.*?\d)^\$?(([1-9]\d{0,2}(,\d{3})*)|\d+)?(\.\d{1,2})?$/; 
     const isValid = reg.test(inputValue)
@@ -109,15 +153,38 @@ const isValidFormatPercentage = (inputValue) => {
             errorMessage : "Must be a percentage",
         }
     }
-    return (isValid);  
+    return {
+        isValid : true,
+    }  
 }
+
+//Check if person is only a integer 
+
+const isValidFormatPerson = (inputValue) => {
+    reg = /^[0-9]*$/;
+    const isValid = reg.test(inputValue);
+    if (!isValid) {
+        return {
+            isValid,
+            errorMessage: "Can only be a integer",
+        }
+    }
+    return {
+        isValid : true,
+    }
+}
+
 //add eventListeners to the amount field
 
 money.addEventListener('blur', (e) => {
     let input = e.target.value; 
     isValid = isInputValid(input, isNonNegativeFloat, isNotZero, isValidFormatAmount);
-    if (!isValid.isvalid){
+    if (!isValid.isValid){
         setError(money_input, isValid.errorsMessages[0])
+    } else {
+        calculator.amount = input; 
+        calculateTotalPerPerson();
+        calculateTipPerPerson() 
     }
 });
 
@@ -141,9 +208,20 @@ buttons.forEach(function(button){
 percentage.addEventListener('blur', (e) => {
     let input = e.target.value; 
     isValid = isInputValid(input, isNonNegativeFloat, isNotZero, isValidFormatPercentage);
-    if (!isValid.isvalid){
+    if (!isValid.isValid){
         setError(custom, isValid.errorsMessages[0])
-    }
+       } else {
+        // unset the button 
+        selected_button = document.querySelector('input[name="percentage"]:checked');
+        selected_button.checked = false;
+        
+        // set the values and calculate from it 
+
+        calculator.tip = input; 
+        calculateTotalPerPerson();
+        calculateTipPerPerson();  
+       }
+    
 });
 
 // Let the erors disappear
@@ -156,9 +234,22 @@ percentage.addEventListener('focus', () => {
 //Add eventListeners to the person input field
 
 person.addEventListener('blur', (e) =>{
-   calculator.numberOfPersons = e.target.value; 
- 
+   let input = e.target.value;  
+   isValid = isInputValid(input, isNonNegativeFloat, isNotZero, isValidFormatPerson);  //testen welke nu false is
+   if (!isValid.isValid){
+    setError(person_input, isValid.errorsMessages[0])
+   } else {
+    calculator.numberOfPersons = input; 
+    calculateTotalPerPerson();
+    calculateTipPerPerson();  
+   }
 })
+
+person.addEventListener('focus', () => {
+    setError(person_input, "");
+    person_input.style.border = "none";  
+})
+
 
 
 
