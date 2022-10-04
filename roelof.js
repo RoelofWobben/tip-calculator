@@ -27,7 +27,7 @@ setError = (element, errorMessage) => {
     const parent = element.parentElement;
     const paragraph = parent.querySelector('.error')
     paragraph.textContent = errorMessage;
-    element.style.border = "2px solid red"; 
+    element.classList.add('error_border');  
 }
 
 //Calculations 
@@ -192,7 +192,7 @@ money.addEventListener('blur', (e) => {
 
 money.addEventListener('focus',() => {
     setError(money_input, "")
-    money_input.style.border = "none"; 
+    money_input.classList.remove('error_border') 
 }); 
 
 
@@ -228,7 +228,7 @@ percentage.addEventListener('blur', (e) => {
 
 percentage.addEventListener('focus', () => {
     setError(custom, "");
-    custom.style.border = "none";  
+    custom.classList.remove('error_border') 
 })
 
 //Add eventListeners to the person input field
@@ -247,7 +247,7 @@ person.addEventListener('blur', (e) =>{
 
 person.addEventListener('focus', () => {
     setError(person_input, "");
-    person_input.style.border = "none";  
+    person_input.classList.remove('error_border') 
 })
 
 

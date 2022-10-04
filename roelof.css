@@ -22,6 +22,8 @@ body {
 }
 
 label, p{
+    display:flex; 
+    flex-direction: column; 
     color: var(--dark_grayish_cyan1);
     margin: 10px;
     font-weight: 700;    
@@ -35,6 +37,11 @@ input{
     text-align: right;
     padding-right: 20px;
     width: 290px; 
+}
+
+output{
+    text-align: right; 
+    width: 50%; 
 }
 
 .header_container{
@@ -142,7 +149,12 @@ input[type="radio"]:checked + label{
     text-align: right; 
 }
 
+.error_border{
+    border: 2px solid red; 
+}
+
 .right{
+    display: flex; 
     margin-top: 20px; 
     background-color: var(--very_dark_cyan);
     border-radius: 5px ;
@@ -154,4 +166,8 @@ input[type="radio"]:checked + label{
 
 .white{
     color: var(--white); 
+}
+
+.tip {
+    width: 40%; 
 }
