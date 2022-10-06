@@ -213,11 +213,15 @@ percentage.addEventListener('blur', (e) => {
        } else {
         // unset the button 
         selected_button = document.querySelector('input[name="percentage"]:checked');
-        selected_button.checked = false;
+        if (selected_button != null){
+            selected_button.checked = false;
+  
+        }
+        
         
         // set the values and calculate from it 
-
-        calculator.tip = input; 
+        let parsed_input = (parseFloat(input)/100).toString();
+        calculator.tip = parsed_input; 
         calculateTotalPerPerson();
         calculateTipPerPerson();  
        }
