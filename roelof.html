@@ -33,41 +33,52 @@
                             <input type="text" id="amount" value="0" />
                         </div>
                     </div>
-                <div class="buttons_container">
-                    <div class="header_container">
-                        <p> Select tip %</p>
-                        <p class="error"></p>
-                    </div>            
-                    <div class="buttons">
-                        <input type="radio" id="five" name="percentage" value="0.05" class="button">
-                        <label for="five">5 %</label>
-                        <input type="radio" id="ten" name="percentage" value="0.10">
-                        <label for="ten">10 %</label>
-                        <input type="radio" id="fifteen" name="percentage" value="0.15">
-                        <label for="fifteen">15 %</label>
-                        <input type="radio" id="twente-five" name="percentage" value="0.25">
-                        <label for="twente-five">25 %</label>
-                        <input type="radio" id="fifty" name="percentage" value="0.50">
-                        <label for="fifty">50 %</label>
+                    <div class="buttons_container">
+                        <div class="header_container">
+                            <p> Select tip %</p>
+                            <p class="error"></p>
+                        </div>            
+                        <div class="buttons">
+                            <input type="radio" id="five" name="percentage" value="0.05" class="button">
+                            <label for="five">5 %</label>
+                            <input type="radio" id="ten" name="percentage" value="0.10">
+                            <label for="ten">10 %</label>
+                            <input type="radio" id="fifteen" name="percentage" value="0.15">
+                            <label for="fifteen">15 %</label>
+                            <input type="radio" id="twente-five" name="percentage" value="0.25">
+                            <label for="twente-five">25 %</label>
+                            <input type="radio" id="fifty" name="percentage" value="0.50">
+                            <label for="fifty">50 %</label>
+                        </div>
+                        <input type="text" id="percentage" value="Custom" />
                     </div>
-                    <input type="text" id="percentage" value="Custom" />
-                </div>
-                <div class="person_container">
-                    <div class="header_container">
-                        <label for="person">Number of persons</label>
-                        <p class="error"></p>
-                    </div>    
-                    <div class="person_input">
-                        <img src="./images/icon-person.svg">
-                        <input type="text" id="person" value="0" />
+                    <div class="person_container">
+                        <div class="header_container">
+                            <label for="person">Number of people</label>
+                            <p class="error"></p>
+                        </div>    
+                        <div class="person_input">
+                            <img src="./images/icon-person.svg">
+                            <input type="text" id="person" value="0" />
+                        </div>
                     </div>
-                </div>
+                </div>    
                 <div class="right">
-                    <label for="tipPerPerson" class="tip">
-                        <span class="white">Tip amount</span>
-                        <span class="white">/ person</span>
-                    </label>
-                    <output class="tipPerPerson"></output>
+                    <div class ="tip_output_container">
+                        <label for="tipPerPerson" class="tip">
+                            <span class="white">Tip Amount</span>
+                            <span class="green">/ person</span>
+                        </label>
+                        <output class="tipPerPerson"></output>
+                    </div>
+                    <div class="total_output_container">
+                        <label for="totalPerPerson" class="tip">
+                            <span class="white">Total</span>
+                            <span class="green">/ person</span>
+                        </label>
+                        <output class="totalPerPerson"></output>
+                    </div>
+                    <button class="btn">RESET</button>
                 </div>
             </form>
         </div>

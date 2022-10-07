@@ -6,7 +6,9 @@ let buttons = document.querySelectorAll(".buttons");
 let custom = document.querySelector('#percentage');
 let person = document.querySelector('#person');
 let person_input = document.querySelector('.person_input');
-let tipPerPerson = document.querySelector('.tipPerPerson');  
+let tipPerPerson = document.querySelector('.tipPerPerson');
+let totalPerPerson = document.querySelector('.totalPerPerson');
+let button = document.querySelector('.btn');    
 
 // Class to hold the variables and functions 
 class TipCalculator{
@@ -20,7 +22,6 @@ class TipCalculator{
 
 let calculator =  new TipCalculator(0.00, 0.00, 0);
 
-
 // Show ErrorMessage 
 
 setError = (element, errorMessage) => {
@@ -30,12 +31,22 @@ setError = (element, errorMessage) => {
     element.classList.add('error_border');  
 }
 
+// Format output as currency 
+
+let dollarUS = Intl.NumberFormat('en-us', {
+    style: "currency", 
+    currency: "USD",
+}); 
+
+
 //Calculations 
 
 const calculateTotalPerPerson = () =>{
     
     // Doe niks al het bedrag of aantal personen niet ingevuld is
     
+   console.log("im calculating "); 
+
     if (calculator.amount === 0 || calculator.numberOfPersons === 0) {
         return 
     }
@@ -47,9 +58,9 @@ const calculateTotalPerPerson = () =>{
     
     // calculate the tip per person 
 
-    let outcome = (amount * ( 1 + tip)) / persons; 
+    let outcome = (amount * ( 1 + tip)) / persons;
     
-    return amount; 
+    totalPerPerson.innerHTML = dollarUS.format(outcome); 
 }
 
 const calculateTipPerPerson = () => {
@@ -69,7 +80,7 @@ const calculateTipPerPerson = () => {
 
     let outcome = (amount * tip) / persons;
     
-    tipPerPerson.innerHTML = "$" + " " + outcome;  
+    tipPerPerson.innerHTML = dollarUS.format(outcome);   
 }
 
 // Validations
@@ -192,7 +203,9 @@ money.addEventListener('blur', (e) => {
 
 money.addEventListener('focus',() => {
     setError(money_input, "")
-    money_input.classList.remove('error_border') 
+    money_input.classList.remove('error_border'); 
+    money.value = "" ;
+    money_input.style.border = "2px solid hsl(172, 67%, 45%)";   
 }); 
 
 
@@ -201,6 +214,12 @@ money.addEventListener('focus',() => {
 buttons.forEach(function(button){
     button.addEventListener('change', (e) => {
         calculator.tip = e.target.value;
+
+        custom.value = "Custom" ;
+
+        calculateTotalPerPerson();
+        calculateTipPerPerson(); 
+
     })
 })
 
@@ -232,14 +251,15 @@ percentage.addEventListener('blur', (e) => {
 
 percentage.addEventListener('focus', () => {
     setError(custom, "");
-    custom.classList.remove('error_border') 
+    custom.classList.remove('error_border')
+    custom.value="";
 })
 
 //Add eventListeners to the person input field
 
 person.addEventListener('blur', (e) =>{
    let input = e.target.value;  
-   isValid = isInputValid(input, isNonNegativeFloat, isNotZero, isValidFormatPerson);  //testen welke nu false is
+   isValid = isInputValid(input, isNonNegativeFloat, isNotZero, isValidFormatPerson);
    if (!isValid.isValid){
     setError(person_input, isValid.errorsMessages[0])
    } else {
@@ -251,10 +271,33 @@ person.addEventListener('blur', (e) =>{
 
 person.addEventListener('focus', () => {
     setError(person_input, "");
-    person_input.classList.remove('error_border') 
+    person_input.classList.remove('error_border')
+    person.value = "" ;
 })
 
+// Add eventListener to the button to reset things
 
+button.addEventListener('click', () => {
+    
+    // set object to standard 
+
+    calculator.amount = "0"; 
+    calculator.numberOfPersons = "0"; 
+    calculator.tip = "0";
+    
+    // change screen
+
+    amount_input.innerhtml = "0";
+    
+    selected_button = document.querySelector('input[name="percentage"]:checked');
+    if (selected_button != null){
+        selected_button.checked = false;
+
+    }
+
+    custom.innerHTML = "Custom"; 
+    person_input.innerHTML = "0"
+})
 
 
 
