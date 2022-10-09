@@ -21,7 +21,8 @@ body {
     background-color: var(--light_grayish_cyan1);
     display: flex;
     justify-content: center;
-    align-items: center; 
+    align-items: center;
+    user-select: none; 
 }
 
 label, p{
@@ -107,6 +108,8 @@ input:focus{
 }
 
 
+
+
 .buttons_container{
     position: relative;
 }
@@ -157,6 +160,11 @@ input[type="radio"]:checked + label{
     background-color:var(--strong_cyan); 
     color: var(--very_dark_cyan);
     border: 1px solid var(--strong-cyan); 
+}
+
+input[type="radio"]:hover {
+    background-color: var(--strong-cyan);
+    cursor: pointer;   
 }
 
 .error{
