@@ -103,7 +103,7 @@ input:focus{
 #percentage:focus,
 .person_input:focus, 
 .person_input:hover{
-    border: 2px solid var(--strong_cyan);
+    border-color: var(--strong_cyan);
     cursor: pointer;   
 }
 
@@ -145,7 +145,7 @@ input:focus{
     bottom: 0px;
     width: 150px;
     border-radius: 5px;
-    border: none;
+    border: 2px solid var(--white);
     background-color: var(--light_grayish_cyan2);
     color: var(--very_dark_cyan);
     font-weight: 700;
@@ -162,8 +162,9 @@ input[type="radio"]:checked + label{
     border: 1px solid var(--strong-cyan); 
 }
 
-input[type="radio"]:hover {
-    background-color: var(--strong-cyan);
+input[type="radio"]:hover + label {
+    background-color: var(--strong_cyan);
+    border-color: var(--strong-cyan);
     cursor: pointer;   
 }
 
