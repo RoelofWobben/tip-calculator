@@ -10,6 +10,14 @@ let tipPerPerson = document.querySelector('.tipPerPerson');
 let totalPerPerson = document.querySelector('.totalPerPerson');
 let button = document.querySelector('.btn');    
 
+
+//disable reset button 
+
+button.disabled = true;
+button.style.backgroundColor = "hsl(183, 100%, 35%)";  
+
+
+
 // Class to hold the variables and functions 
 class TipCalculator{
 
@@ -21,6 +29,14 @@ class TipCalculator{
 }
 
 let calculator =  new TipCalculator(0.00, 0.00, 0);
+
+//set Reset button on enabled 
+
+const enableResetButton = () => {
+    button.disabled = false;
+    button.style.backgroundColor = "hsl(172, 67%, 45%)";  
+}
+
 
 // Show ErrorMessage 
 
@@ -45,8 +61,6 @@ const calculateTotalPerPerson = () =>{
     
     // Doe niks al het bedrag of aantal personen niet ingevuld is
     
-   console.log("im calculating "); 
-
     if (calculator.amount === 0 || calculator.numberOfPersons === 0) {
         return 
     }
@@ -193,6 +207,7 @@ money.addEventListener('blur', (e) => {
     if (!isValid.isValid){
         setError(money_input, isValid.errorsMessages[0])
     } else {
+        enableResetButton(); 
         calculator.amount = input; 
         calculateTotalPerPerson();
         calculateTipPerPerson() 
@@ -216,7 +231,7 @@ buttons.forEach(function(button){
         calculator.tip = e.target.value;
 
         custom.value = "Custom" ;
-
+        enableResetButton(); 
         calculateTotalPerPerson();
         calculateTipPerPerson(); 
 
@@ -237,6 +252,7 @@ percentage.addEventListener('blur', (e) => {
   
         }
         
+        enableResetButton(); 
         
         // set the values and calculate from it 
         let parsed_input = (parseFloat(input)/100).toString();
@@ -263,6 +279,7 @@ person.addEventListener('blur', (e) =>{
    if (!isValid.isValid){
     setError(person_input, isValid.errorsMessages[0])
    } else {
+    enableResetButton(); 
     calculator.numberOfPersons = input; 
     calculateTotalPerPerson();
     calculateTipPerPerson();  
@@ -299,7 +316,14 @@ button.addEventListener('click', () => {
     person_input.innerHTML = "0"
 })
 
+button.addEventListener('mouseover', () => {
+    button.style.backgroundColor = "hsl(186, 14%, 43%)";
+})
 
+
+button.addEventListener('mouseout', () => {
+    button.style.backgroundColor = "hsl(172, 67%, 45%)";
+})
 
 
 

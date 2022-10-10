@@ -223,11 +223,6 @@ input[type="radio"]:hover + label {
     font-size: 20px;  
 }
 
-.btn:hover{
-    background-color: hsl(173, 61%, 77%);
-    cursor: pointer;  
-}
-
 @media screen and (min-width: 1000px){
 
     .container {
